@@ -10,14 +10,15 @@ import pojo.Student;
 
 @Controller
 public class StudentController {
-
+	
 	@Autowired
 	StudentDao dao;
-
+	
 	@RequestMapping("/show")
-	public String getAllStudents(Model model) {
-		List<Student> list = dao.getAllStudents();
+	public String getAllStudents(Model model){		
+		
+		List<Student> list= dao.getAllStudents();
 		model.addAttribute("list", list);
-		return "show";
+		return "show";		
 	}
 }

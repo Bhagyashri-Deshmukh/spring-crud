@@ -10,22 +10,22 @@ import pojo.Student;
 public class StudentDao {
 
 	JdbcTemplate template;
-
+	
 	public void setTemplate(JdbcTemplate template) {
-		this.template = template;
+		this.template= template;
 	}
 	
 	public List<Student> getAllStudents(){
 		
-		return template.query("select * from student", new RowMapper<Student>(){
+		return template.query("select * from student", new RowMapper<Student>() {
 			
-			public Student mapRow(ResultSet rs, int row) throws SQLException{
-				
-				Student student = new Student();
-				student.setId(rs.getInt(1));
-				student.setName(rs.getString(2));
-				student.setAddress(rs.getString(3));
-				return student;
+			public Student mapRow(ResultSet rs, int row) throws SQLException {
+			
+				Student st = new Student();
+				st.setId(rs.getInt(1));
+				st.setName(rs.getString(2));
+				st.setAddress(rs.getString(3));
+				return st;
 			}
 		});
 	}
