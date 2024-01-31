@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="2" width="20%" cellpadding="2">
+	<table border="2" width="30%" cellpadding="2">
  
  		<tr>
  			<th>ID</th>
@@ -21,6 +21,7 @@
 			    <td>${student.id}</td>
 			    <td>${student.name}</td>
 			    <td>${student.address}</td>
+			    <td> <a href="deletestudent/${student.id }">Delete Student</a> </td>
    			</tr>
    	 </c:forEach> 
  </table>

@@ -29,4 +29,10 @@ public class StudentDao {
 			}
 		});
 	}
+
+	public void deleteStudent(int id) {
+		// TODO Auto-generated method stub
+		String sql ="delete from student where id ="+id;
+		template.update(sql);
+	}
 }
