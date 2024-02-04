@@ -8,12 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="2" width="30%" cellpadding="2">
+	<table border="2" width="30%" cellpadding="1">
  
  		<tr>
  			<th>ID</th>
  			<th>NAME</th>
  			<th>ADDRESS</th>
+ 			<th>DELETE</th>
+ 			<th>EDIT</th>
  		</tr>
  	
  		<c:forEach var="student" items="${list}"> 
@@ -22,6 +24,7 @@
 			    <td>${student.name}</td>
 			    <td>${student.address}</td>
 			    <td> <a href="deletestudent/${student.id }">Delete Student</a> </td>
+			    <td> <a href="editstudent/${student.id}">Edit</a> </td>
    			</tr>
    	 </c:forEach> 
  </table>

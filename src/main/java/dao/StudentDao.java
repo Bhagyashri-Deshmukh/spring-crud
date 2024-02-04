@@ -3,8 +3,10 @@ package dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+
 import pojo.Student;
 
 public class StudentDao {
@@ -35,4 +37,29 @@ public class StudentDao {
 		String sql ="delete from student where id ="+id;
 		template.update(sql);
 	}
+
+	public Student getStudentById(int id) {
+		// TODO Auto-generated method stub
+		String sql="select * from student where id=?";		
+		return template.queryForObject(sql, new Object[] {id}, new BeanPropertyRowMapper<Student>(Student.class));
+	}
+
+	public int update(Student stud) {
+		// TODO Auto-generated method stub
+		String sql ="update student set name='"+stud.getName()+"', address='"+stud.getAddress()+"' where id='"+stud.getId()+"'";
+		return template.update(sql);
+	} 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

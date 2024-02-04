@@ -4,10 +4,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import dao.StudentDao;
 import pojo.Student;
 
@@ -30,5 +30,39 @@ public class StudentController {
 		
 		dao.deleteStudent(id);
 		return "redirect:/show";
+	} 
+	
+	@RequestMapping(value="/editstudent/{id}")
+	public String editStudent(@PathVariable int id, Model model) {
+		
+		Student student =dao.getStudentById(id);
+		model.addAttribute("command", student);		
+		return "editpage";		
+	}
+	
+	@RequestMapping(value="/update", method = RequestMethod.POST)
+	public String updateStudent(@ModelAttribute("stud") Student stud ) {
+		dao.update(stud);
+		return "redirect:/show";
+		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
