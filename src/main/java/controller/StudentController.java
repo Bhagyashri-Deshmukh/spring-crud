@@ -19,22 +19,19 @@ public class StudentController {
 	
 	@RequestMapping("/show")
 	public String getAllStudents(Model model){		
-		
 		List<Student> list= dao.getAllStudents();
 		model.addAttribute("list", list);
 		return "show";		
 	}
 	
 	@RequestMapping(value="/deletestudent/{id}", method = RequestMethod.GET)
-	public String deleteStudent(@PathVariable int id) {
-		
+	public String deleteStudent(@PathVariable int id) {		
 		dao.deleteStudent(id);
 		return "redirect:/show";
 	} 
 	
 	@RequestMapping(value="/editstudent/{id}")
-	public String editStudent(@PathVariable int id, Model model) {
-		
+	public String editStudent(@PathVariable int id, Model model) {		
 		Student student =dao.getStudentById(id);
 		model.addAttribute("command", student);		
 		return "editpage";		
@@ -43,26 +40,18 @@ public class StudentController {
 	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String updateStudent(@ModelAttribute("stud") Student stud ) {
 		dao.update(stud);
+		return "redirect:/show";		
+	}
+	
+	@RequestMapping(value="/studentform")
+	public String showForm(Model model) {
+		model.addAttribute("command", new Student());
+		return "studentform";
+	}
+	
+	@RequestMapping(value="/add", method = RequestMethod.POST)
+	public String addStudent(@ModelAttribute("student") Student student) {
+		dao.addStudent(student);
 		return "redirect:/show";
-		
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

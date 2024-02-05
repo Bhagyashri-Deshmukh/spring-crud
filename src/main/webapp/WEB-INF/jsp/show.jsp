@@ -28,5 +28,7 @@
    			</tr>
    	 </c:forEach> 
  </table>
+ <br/>
+ 		<a href="studentform">Add New Student</a>
 </body>
 </html>

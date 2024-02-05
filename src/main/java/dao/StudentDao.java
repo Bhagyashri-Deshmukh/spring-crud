@@ -48,18 +48,11 @@ public class StudentDao {
 		// TODO Auto-generated method stub
 		String sql ="update student set name='"+stud.getName()+"', address='"+stud.getAddress()+"' where id='"+stud.getId()+"'";
 		return template.update(sql);
-	} 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
+
+	public int addStudent(Student student) {
+		// TODO Auto-generated method stub
+		String sql="insert into student(name, address) values('"+student.getName()+"','"+student.getAddress()+"')";
+		return template.update(sql);
+	} 	
 }
